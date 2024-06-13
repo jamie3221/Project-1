@@ -28,7 +28,7 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                fetch('get-locations.php')
+                fetch('getlocation.php')
                     .then(response => response.json())
                     .then(data => {
                         const locationList = document.getElementById('locationlist');
@@ -40,7 +40,6 @@
                         });
                     })
                     .catch(error => console.error('Error fetching locations:', error));
-    
                 const form = document.getElementById('registrationForm');
                 form.addEventListener('submit', function(event) {
                     const email = document.getElementById('email').value;
@@ -49,7 +48,6 @@
                         alert('Please enter a valid email address.');
                     }
                 });
-    
                 function validateEmail(email) {
                     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     return re.test(email);
