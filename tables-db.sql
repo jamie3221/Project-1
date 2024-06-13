@@ -15,6 +15,7 @@ CREATE Table customer(
     Caddress varchar(255) NOT NULL,
     Cphone varchar(15) NOT NULL,
     locationID int(11) NOT NULL,
+    Cprofilepic varchar(255),
     Foreign Key (locationID) REFERENCES location(locationID)
 );
 CREATE TABLE ServiceProvider(
@@ -28,6 +29,7 @@ CREATE TABLE ServiceProvider(
     SPavailability TINYINT(1) NOT NULL,
     SPrating FLOAT NOT NULL,
     locationID int(11) NOT NULL,
+    Sprofilepic varchar(255),
     Foreign Key (locationID) REFERENCES location(locationID)
 );
 CREATE TABLE ServiceType(
@@ -61,3 +63,4 @@ CREATE TABLE report(
     adminID int(11) NOT NULL,
     Foreign Key (adminID) REFERENCES systemadministator(adminID)
 );
+drop DATABASE IS_PROJECT;
