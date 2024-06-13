@@ -8,7 +8,7 @@
     <body>
         <div class="container">
             <h1>Register as a user</h1>
-            <form action="register-customer.php" method="post">
+            <form action="customerreg.php" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -28,7 +28,7 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                fetch('getlocation.php')
+                fetch('get-locations.php')
                     .then(response => response.json())
                     .then(data => {
                         const locationList = document.getElementById('locationlist');
@@ -40,6 +40,20 @@
                         });
                     })
                     .catch(error => console.error('Error fetching locations:', error));
+    
+                const form = document.getElementById('registrationForm');
+                form.addEventListener('submit', function(event) {
+                    const email = document.getElementById('email').value;
+                    if (!validateEmail(email)) {
+                        event.preventDefault();
+                        alert('Please enter a valid email address.');
+                    }
+                });
+    
+                function validateEmail(email) {
+                    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return re.test(email);
+                }
             });
         </script>
     </body>

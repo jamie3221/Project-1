@@ -29,7 +29,7 @@ CREATE TABLE ServiceProvider(
     SPavailability TINYINT(1) NOT NULL,
     SPrating FLOAT NOT NULL,
     locationID int(11) NOT NULL,
-    Sprofilepic varchar(255),
+    SPprofilepic varchar(255),
     Foreign Key (locationID) REFERENCES location(locationID)
 );
 CREATE TABLE ServiceType(
