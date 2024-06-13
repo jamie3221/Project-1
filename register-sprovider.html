@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Service Provider Registration</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Register as a service provider</h1>
+            <form action="register-sprovider.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                <label for="locationlist">Location:</label>
+                <input type="list" id="locationlist" name="Location" required>
+                <label for="service">Service:</label>
+                <input type="text" id="service" name="service" required>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('getlocation.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const locationList = document.getElementById('locationlist');
+                        data.forEach(location => {
+                            const option = document.createElement('option');
+                            option.value = location.locationID;
+                            option.textContent = `${location.Lnames}, ${location.Lcity}, ${location.Lstateorcounty}, ${location.Lcountry}`;
+                            locationList.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching locations:', error));
+            });
+        </script>
+    </body>
+</html>
